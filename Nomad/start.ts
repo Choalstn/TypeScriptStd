@@ -44,3 +44,25 @@ const b : any = true
 
 //any로 지정했기 때문에 오류가 안 나는  것. 원래의 ts라면 오류 남
 console.log(a+b)
+
+//API를 받아올 때 어떤 타입인지 모르겠다면 unknown으로 설정
+let c : unknown;
+
+//아무것도 리턴하지 않으니 void 타입. default로 void 타입이 지정됨
+function hello() {
+    console.log('hello')
+}
+
+//함수가 절대 return 하지 않으면 never never 타입
+//값이 둘 중 하나 일 때도 never 타입 
+function hi(name:string|number) {
+    if(typeof name === 'string') {
+        name
+    } else if(typeof name === 'number') {
+        name
+    } else {
+        //name type은 never
+        //이 구문을 절대로 실행되지 않음
+        name
+    }
+}
