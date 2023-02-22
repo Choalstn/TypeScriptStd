@@ -1,50 +1,21 @@
-// 포괄적인 타입 지정
-// const person : object = {
-//     name : "minsu",
-//     age : 24,
-// };
-// const person : {
-//     name : string,
-//     age : number
-// } = {
-//     name : "minsu",
-//     age : 24
-// }
-// const person: {
-//     name : string,
-//     age :  number,
-//     hobbies : string[],
-//     role : [number, string]
-// } = {
-//     name : 'minsu',
-//     age : 24,
-//     hobbies : ['Sports', 'Cooking'],
-//     role: [2, 'author']
-// }
-var Role;
-(function (Role) {
-    Role[Role["ADMIN"] = 0] = "ADMIN";
-    Role[Role["READ_ONLY"] = 1] = "READ_ONLY";
-    Role[Role["AUTHOR"] = 2] = "AUTHOR";
-})(Role || (Role = {}));
-;
-var person = {
-    name: 'minsu',
-    age: 24,
-    hobbies: ['Sports', 'Cooking'],
-    role: Role.ADMIN
-};
-// Push가 되긴 함
-// person.role.push('admin');
-//두 번째 인자는 string이기 때문에 불가능
-// person.role[1] = 10;
-var favoriteActivites;
-favoriteActivites = ["Sports", "Cooking"];
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
-    console.log(hobby);
+function combine(input1, input2, resultConversion) {
+    var result;
+    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
+        result = +input1 + +input2;
+    }
+    else {
+        result = input1.toString() + input2.toString();
+    }
+    // if(resultConversion === 'as-number') {
+    //     return +result;
+    // } else {
+    //     return result.toString();
+    // }
+    return result;
 }
-if (person.role === Role.ADMIN) {
-    console.log("is Admin");
-}
-console.log(person.name);
+var combineAges = combine(30, 26, 'as-number');
+console.log(combineAges);
+var combineStringAges = combine('30', '26', 'as-number');
+console.log(combineStringAges);
+var combineNames = combine("TaeYoung", "Minsu", 'as-text');
+console.log(combineNames);

@@ -1,53 +1,24 @@
-// 포괄적인 타입 지정
-// const person : object = {
-//     name : "minsu",
-//     age : 24,
-// };
+function combine(input1 : number | string, input2 : number | string, resultConversion : 'as-number' | 'as-text' ) {
+    let result;
+    if(typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
+        result = +input1 + +input2; 
+    } else {
+        result = input1.toString() + input2.toString();
+    }
 
-// const person : {
-//     name : string,
-//     age : number
-// } = {
-//     name : "minsu",
-//     age : 24
-// }
-
-// const person: {
-//     name : string,
-//     age :  number,
-//     hobbies : string[],
-//     role : [number, string]
-// } = {
-//     name : 'minsu',
-//     age : 24,
-//     hobbies : ['Sports', 'Cooking'],
-//     role: [2, 'author']
-// }
-
-enum Role {ADMIN, READ_ONLY, AUTHOR};
-
-const person = {
-    name : 'minsu',
-    age : 24,
-    hobbies : ['Sports', 'Cooking'],
-    role: Role.ADMIN
+    // if(resultConversion === 'as-number') {
+    //     return +result;
+    // } else {
+    //     return result.toString();
+    // }
+    return result;
 }
 
-// Push가 되긴 함
-// person.role.push('admin');
+const combineAges = combine(30,26, 'as-number');
+console.log(combineAges);
+ 
+const combineStringAges = combine('30','26', 'as-number');
+console.log(combineStringAges)
 
-//두 번째 인자는 string이기 때문에 불가능
-// person.role[1] = 10;
-
-let favoriteActivites : string[] ; 
-favoriteActivites = ["Sports", "Cooking"];
-
-for(const hobby of person.hobbies) {
-    console.log(hobby)
-}
-
-if(person.role === Role.ADMIN) {
-    console.log("is Admin")
-}
-
-console.log(person.name)
+const combineNames = combine("TaeYoung", "Minsu", 'as-text');
+console.log(combineNames)
