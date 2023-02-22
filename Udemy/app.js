@@ -1,21 +1,13 @@
-function combine(input1, input2, resultConversion) {
-    var result;
-    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
-        result = +input1 + +input2;
-    }
-    else {
-        result = input1.toString() + input2.toString();
-    }
-    // if(resultConversion === 'as-number') {
-    //     return +result;
-    // } else {
-    //     return result.toString();
-    // }
-    return result;
+function addUdemy(n1, n2) {
+    return n1 + n2;
 }
-var combineAges = combine(30, 26, 'as-number');
-console.log(combineAges);
-var combineStringAges = combine('30', '26', 'as-number');
-console.log(combineStringAges);
-var combineNames = combine("TaeYoung", "Minsu", 'as-text');
-console.log(combineNames);
+// void 타입 반환 
+function printResult(num) {
+    console.log('Result : ' + num);
+}
+printResult(addUdemy(5, 12));
+var combinedValues;
+combinedValues = addUdemy;
+// printResult는 void 타입이며 인자를 한 개만 받고 있기 때문에 불가능 
+// combinedValues = printResult;
+console.log(combinedValues(8, 8));
