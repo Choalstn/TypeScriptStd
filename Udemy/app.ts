@@ -12,16 +12,25 @@
 //     age : 24
 // }
 
-const person: {
-    name : string,
-    age :  number,
-    hobbies : string[],
-    role : [number, string]
-} = {
+// const person: {
+//     name : string,
+//     age :  number,
+//     hobbies : string[],
+//     role : [number, string]
+// } = {
+//     name : 'minsu',
+//     age : 24,
+//     hobbies : ['Sports', 'Cooking'],
+//     role: [2, 'author']
+// }
+
+enum Role {ADMIN, READ_ONLY, AUTHOR};
+
+const person = {
     name : 'minsu',
     age : 24,
     hobbies : ['Sports', 'Cooking'],
-    role: [2, 'author']
+    role: Role.ADMIN
 }
 
 // Push가 되긴 함
@@ -35,6 +44,10 @@ favoriteActivites = ["Sports", "Cooking"];
 
 for(const hobby of person.hobbies) {
     console.log(hobby)
+}
+
+if(person.role === Role.ADMIN) {
+    console.log("is Admin")
 }
 
 console.log(person.name)
