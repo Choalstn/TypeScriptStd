@@ -1,4 +1,8 @@
-function combine(input1 : number | string, input2 : number | string, resultConversion : 'as-number' | 'as-text' ) {
+//재사용이 가능한 알리어스 타입 (불필요한 반복을 피하고 타입을 중심에서 관리할 수 있음)
+type Combinable = number | string;
+type ConversionDescriptor = 'as-number' | 'as-text';
+
+function combine(input1 : Combinable, input2 : Combinable, resultConversion : ConversionDescriptor) {
     let result;
     if(typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
         result = +input1 + +input2; 
