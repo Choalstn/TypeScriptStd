@@ -1,29 +1,17 @@
-function addUdemy(n1 : number, n2:number) {
-    return n1 + n2
+let userInput: unknown;
+let userName: string;
+
+userInput = 5;
+userInput = 'Minsu'
+
+userName = 'Cho'
+
+if(typeof userInput === 'string') {
+    userName = userInput;
 }
 
-// void 타입 반환 
-function printResult(num : number) {
-    console.log('Result : ' + num)
-}
+console.log(userName)
 
-function addAndHandle(n1:number, n2:number, callback: (num : number) => void) {
-    const result = n1 + n2;
-    callback(result);
-
-}
-
-printResult(addUdemy(5,12))
-
-let combinedValues : (a:number, b:number) => number;
-
-combinedValues = addUdemy;
-
-// printResult는 void 타입이며 인자를 한 개만 받고 있기 때문에 불가능 
-// combinedValues = printResult;
-
-console.log(combinedValues(8,8))
-
-addAndHandle(10, 20, (result) => {
-    console.log(result)
-});
+// any와 비슷한 역할이지만 아래 코드에서 차이점이 나타남
+// userInput이 unknown이면 에러, any면 에러x
+// userName = userInput;
