@@ -1,6 +1,7 @@
-var button = document.querySelector("button");
-var input1 = document.getElementById("num1"); // !을 붙여줌으로써 절대 null이 아님을 알려줌 
-var input2 = document.getElementById("num2");
+"use strict";
+const button = document.querySelector("button");
+const input1 = document.getElementById("num1"); // !을 붙여줌으로써 절대 null이 아님을 알려줌 
+const input2 = document.getElementById("num2");
 function addUdemy(num1, num2) {
     return num1 + num2;
 }

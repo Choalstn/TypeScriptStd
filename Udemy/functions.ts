@@ -1,4 +1,4 @@
-function addUdemy(n1 : number, n2:number) {
+function addUdemyFunctions(n1 : number, n2:number) {
     return n1 + n2
 }
 
@@ -13,11 +13,11 @@ function addAndHandle(n1:number, n2:number, callback: (num : number) => void) {
 
 }
 
-printResult(addUdemy(5,12))
+printResult(addUdemyFunctions(5,12))
 
 let combinedValues : (a:number, b:number) => number;
 
-combinedValues = addUdemy;
+combinedValues = addUdemyFunctions;
 
 // printResult는 void 타입이며 인자를 한 개만 받고 있기 때문에 불가능 
 // combinedValues = printResult;
