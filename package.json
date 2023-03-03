@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Choalstn/TypeScriptStd#readme",
   "devDependencies": {
     "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "tsc-watch": "^6.0.0"
   }
 }
