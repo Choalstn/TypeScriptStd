@@ -9,6 +9,11 @@ class Department {
         // this.name = n;
     }
 
+    // 정적 메서드 -> 인스턴스에서 접근 불가능 
+    static createEmployee(name:string) {
+        return {name: name};
+    }
+
     describe(this:Department) {
         console.log(`Department (${this.id}) : ${this.name}`)
     }
@@ -20,6 +25,9 @@ class Department {
     printEmployeeInformation() {
         console.log(this.employees.length)
         console.log(this.employees)
+
+        // 정적 메서드는 this 키워드 사용 불가능
+        console.log(Department.createEmployee("max"))
     }
 }
 
@@ -80,6 +88,8 @@ it.name = "NEW NAME"
 it.printEmployeeInformation();
 
 console.log(it)
+
+const employee1 = Department.createEmployee("Ms")
 
 const accounting = new AccountingDepartment('d2', []);
 
