@@ -1,10 +1,10 @@
 // private , public, readonly는 TS에만 있는 접근 제어자 (JS는 없음)
-class Department {
+abstract class Department {
     // private id;
     // private name : string;
     protected employees : string[] = []; //private으로 하면 객체 내에서만 접근 가능 protected는 해당 클래스 뿐만 아니라 자식까지도 사용 가능 
 
-    constructor(private readonly id:string, public name: string) {
+    constructor(protected readonly id:string, public name: string) {
         // this.id = id
         // this.name = n;
     }
@@ -14,9 +14,7 @@ class Department {
         return {name: name};
     }
 
-    describe(this:Department) {
-        console.log(`Department (${this.id}) : ${this.name}`)
-    }
+    abstract describe(this:Department):void;
 
     addEmployee(employee:string) {
         this.employees.push(employee)
@@ -35,10 +33,15 @@ class ITDepartment extends Department {
     constructor(id:string, public admins:string[]) {
         super(id, 'IT')
     }
+
+    describe(this:ITDepartment) {
+        console.log("abstractttttttt IT Department - ID : ", this.id)
+    }
 }
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    private static instance: AccountingDepartment;
 
     // getter 메서드는 return 문 필수 
     get mostRecentReport() {
@@ -57,9 +60,18 @@ class AccountingDepartment extends Department {
         this.addReport(value)
     }
 
-    constructor(id:string, private reports:string[]) {
+    private constructor(id:string, private reports:string[]) {
         super(id, "Accounting")
         this.lastReport = reports[0];
+    }
+
+    static getInstance() {
+        if(AccountingDepartment.instance) {
+            return this.instance;
+        }
+
+        this.instance= new AccountingDepartment('d2', []);
+        return this.instance
     }
 
     addEmployee(employee: string): void {
@@ -76,6 +88,10 @@ class AccountingDepartment extends Department {
     printReports() {
         console.log(this.reports)
     }
+
+    describe() {
+        console.log("abstractttttttt IT Department - ID : ", this.id)
+    }
 }
 
 const it = new ITDepartment('d1', ['Minsu']);
@@ -91,7 +107,8 @@ console.log(it)
 
 const employee1 = Department.createEmployee("Ms")
 
-const accounting = new AccountingDepartment('d2', []);
+// const accounting = new AccountingDepartment('d2', []);
+const accounting = AccountingDepartment.getInstance();
 
 accounting.mostRecentReport = "Year End Report"
 
@@ -104,6 +121,8 @@ accounting.addEmployee("TaeYoung");
 
 accounting.printReports();
 accounting.printEmployeeInformation();
+
+accounting.describe();
 
 // const accountingCopy = {describe : accounting.describe, name : "ms"}
 
