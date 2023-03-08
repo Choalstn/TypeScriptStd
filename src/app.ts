@@ -1,6 +1,10 @@
-interface Greetable {
-    name : string;
+interface Named {
+    readonly name:string;
+}
 
+// interface는 여러 곳으로부터 상속 받을 수 있다
+interface Greetable extends Named {
+    //interface 내 readonly 가능 public, private은 불가능
     greet(phrase: string, ) : void
 }
 
