@@ -10,6 +10,7 @@ abstract class Department {
     }
 
     // 정적 메서드 -> 인스턴스에서 접근 불가능 
+    // 대체적으로 static은 전역 멤버 선언 때 사용 -> 객체마다 할당되지 않고 클래스의 모든 객체가 공유하는 멤버
     static createEmployee(name:string) {
         return {name: name};
     }
@@ -43,6 +44,7 @@ class AccountingDepartment extends Department {
     private lastReport: string;
     private static instance: AccountingDepartment;
 
+    // 외부에서 객체 데이터에 접근할 수 있다면 -> 객체의 데이터 무결성 붕괴
     // getter 메서드는 return 문 필수 
     get mostRecentReport() {
         if(this.lastReport) {
