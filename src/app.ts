@@ -1,46 +1,44 @@
-// type addFn = (a:number, b:number) => number;
+type Admin = {
+    name: string;
+    previleges: string[];
+};
 
-// 함수형 interface
-interface addFn {
-    (a:number, b:number) : number;
+
+type Employee = {
+    name: string;
+    startDate: Date;
+};
+
+// 두 개의 타입이 결합된 새 객체 타입 
+type ElevatedEmployee = Admin & Employee;
+
+const el1: ElevatedEmployee = {
+    name: "Minsu",
+    previleges: ['create-server'],
+    startDate : new Date()
 }
 
-let add: addFn;
+// 인터페이스와 밀접한 관련이 있다 = 인터페이스로 대체가 가능하다  
+// interface Admin {
+//     name: string;
+//     previleges: string[];
+// };
 
-add = (n1:number, n2:number) => {
-    return n1 + n2;
-}
 
-interface Named {
-    readonly name?:string;
-    outputName?:string; // ? = 선택적 속성 => 이 인터페이스를 구현하는 클래스 내에 선택적으로 존재
-}
+// interface Employee {
+//     name: string;
+//     startDate: Date;
+// };
 
-// interface는 여러 곳으로부터 상속 받을 수 있다
-interface Greetable extends Named {
-    //interface 내 readonly 가능 public, private은 불가능
-    greet(phrase: string, ) : void
-}
+// // A-1. interface의 상속 사용 
+// interface ElevatedEmployee extends Admin, Employee {}
 
-// Person class는 Greetable interface 기준을 이행해야 한다
-class Person implements Greetable {
-    name? : string;
-    age = 24;
+// // A-2. 인터페이스 두 가지를 인터섹션으로 사용가능
+// type ElevatedEmployee = Admin & Employee;
 
-    constructor(n:string) {
-        if(n) {
-          this.name = n;  
-        }
-        
-    }
+// // A-1, A-2 둘 다 결과는 동일하게 출력
 
-    greet(phrase:string) {
-        console.log(phrase+ " " + this.name)
-    }
-}
+type Combinable = number | string;
+type Numeric = number | boolean;
 
-let user1: Greetable;
-
-user1 = new Person("Minsu")
-
-console.log(user1)
+type Unversal = Combinable & Numeric;
