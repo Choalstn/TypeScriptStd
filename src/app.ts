@@ -130,3 +130,18 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({type: 'bird', flyingSpeed:10})
+
+// 형변환 첫 번째 방법
+// <> -> 빌드 도구와 리액트로 구문 분석되어 결과적으로 화면에 렌더링하고자 하는 것이 무엇인지 알아내는 데 사용 
+// const userInputElement = <HTMLInputElement>document.getElementById("user-input")!;
+
+// 형변환 두 번째 방법 
+// const userInputElement = document.getElementById("user-input")! as HTMLInputElement ;
+
+// 만일 해당 요소가 null이 아님이 확실치 않다면 ? => 느낌표 사용 불가능
+const userInputElement = document.getElementById('user-input');
+
+// 타입가드와 비슷하게 userInputElement가 truthy 이면 속성 값에 접근하도록 
+if(userInputElement) {
+   (userInputElement as HTMLInputElement).value = "Hi there";
+}
