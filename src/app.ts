@@ -17,3 +17,19 @@ function merge <T extends Object,U>(objA: T, objB: U){
 
 const mergeObj = merge<{name:string, hobbies:string[]}, {age:number}>({name: 'Minsu', hobbies: ['Sports']},{age: 24});
 console.log(mergeObj.name)
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy >(element:T): [T, string] {
+    let descriptionText = "Got no Value"
+
+    if(element.length > 0) {
+        descriptionText = 'Got' + element.length + ' elements';
+    }
+
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe("hello there"))
