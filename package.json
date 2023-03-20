@@ -21,6 +21,7 @@
     "lite-server": "^2.6.1"
   },
   "dependencies": {
-    "tsc-watch": "^6.0.0"
+    "tsc-watch": "^6.0.0",
+    "typescript": "^5.0.2"
   }
 }
