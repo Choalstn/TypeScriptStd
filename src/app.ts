@@ -33,3 +33,10 @@ function countAndDescribe<T extends Lengthy >(element:T): [T, string] {
 }
 
 console.log(countAndDescribe("hello there"))
+
+// U는 T의 키 속성이어야한다
+function extractAndConvert<T extends object, U extends keyof T>(obj:T, key:U) {
+    return obj[key]
+}
+
+extractAndConvert({name : 'TaeYoung'}, 'name')
